@@ -12,16 +12,30 @@ export class HomePage {
             console.log('Platform ready from', readySource);
             // Platform now ready, execute any required native code
 
-            (<any>window).plugins.imei.get(
-                function(imei) {
-                    console.log("got imei: " + imei);
+            let permissions = cordova.plugins['permissions'];
+            permissions.hasPermission('android.permission.READ_PHONE_STATE',
+                (success) => {
+                    if (success.hasPermission === false) {
+                        permissions.requestPermission('android.permission.READ_PHONE_STATE',
+                            (success) => { console.log("success", success) },
+                            (err) => { console.log("error", err) });
+                    }
                 },
-                function() {
-                    console.log("error loading imei");
-                }
-            );
+                (err) => { console.log("error", err) });
 
+
+            if (readySource !== "dom") {
+                (<any>window).plugins.imei.get(
+                    (imei) => {
+                        console.log("got imei: " + imei);
+                    },
+                    () => {
+                        console.log("error loading imei");
+                    }
+                );
+            }
         });
+
     }
 
 }

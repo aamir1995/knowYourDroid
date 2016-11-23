@@ -40,6 +40,9 @@ export class CountryOfOriginChecker {
             case "08":
             case "80":
                 console.log("08 80");
+                break;
+            default:
+                console.log("can't find country of origin");
         }
 
 

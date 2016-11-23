@@ -1,3 +1,23 @@
-page-home {
+// TODO: remove URL and import font from local
+@import url('https://fonts.googleapis.com/css?family=Roboto');
 
+page-home {
+    .infoDiv{
+        color: #e74c3c;
+        font-size: 1.5em;
+        text-align: center;
+        margin-top: 35vh;
+       font-family: 'Roboto', sans-serif;
+
+       p{
+           margin-bottom: 0;
+       }
+        .countryName{
+            font-size: 2em;
+            margin: 0;
+        }
+    }
 }
+.mainContainer{
+   background-color: #34495e !important;
+  }

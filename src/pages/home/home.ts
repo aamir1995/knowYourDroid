@@ -10,14 +10,14 @@ declare var cordova;
     templateUrl: 'home.html'
 })
 export class HomePage {
+    countryOfOrigin: string;
 
     constructor(public navCtrl: NavController, private platform: Platform, private ps: PermissionService, private originChecker: CountryOfOriginChecker) { }
 
 
     ionViewDidLoad() {
 
-        this.originChecker.checkOrigin(369395082355678)
-            .then((success) => { console.log("success", success) })
+
 
         this.platform.ready().then((readySource) => {
             console.log('Platform ready from', readySource);
@@ -35,9 +35,11 @@ export class HomePage {
                                     (<any>window).plugins.imei.get(
                                         (imei) => {
                                             console.log("got imei :" + imei);
-
                                             this.originChecker.checkOrigin(imei)
-                                                .then((twoDigits) => { console.log("Two Digits", twoDigits) })
+                                                .then((countryOfOrigin) => {
+                                                    this.countryOfOrigin = countryOfOrigin;
+                                                    console.log("country of origin is : ", countryOfOrigin);
+                                                });
 
                                         },
                                         () => { console.log("error loading imei"); }
@@ -51,6 +53,12 @@ export class HomePage {
                             (<any>window).plugins.imei.get(
                                 (imei) => {
                                     console.log("got imei frm else statement: " + imei);
+
+                                    this.originChecker.checkOrigin(imei)
+                                        .then((countryOfOrigin) => {
+                                            this.countryOfOrigin = countryOfOrigin;
+                                            console.log("country of origin is : ", countryOfOrigin);
+                                        });
                                 },
                                 () => { console.log("error loading imei"); }
                             );

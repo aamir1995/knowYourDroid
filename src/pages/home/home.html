@@ -11,14 +11,14 @@
     <p>IMEI : 5465654656466</p>
   </div>
 
-  <a href="#" class="proceedBtn">
+  <a href="#" (click)="checkOrigin()" class="proceedBtn">
     <span>Proceed!</span>
   </a>
 
-  <!--<div class="infoDiv">
-    <p>Your Phone is Made in</p>
-    <p class="countryName">{{countryOfOrigin}}</p>
-  </div>-->
+  <div class="infoDiv" style="text-align: center;position: relative;top: 20vh;">
+<p>Your Phone is Made in</p>
+<p class="countryName">{{countryOfOrigin}}</p>
+</div>
 
 
 </ion-content>

@@ -17,8 +17,6 @@ export class HomePage {
 
     ionViewDidLoad() {
 
-
-
         this.platform.ready().then((readySource) => {
             console.log('Platform ready from', readySource);
 
@@ -32,42 +30,60 @@ export class HomePage {
                                 .then((success) => {
                                     console.log("permission granted :", success);
 
-                                    (<any>window).plugins.imei.get(
-                                        (imei) => {
-                                            console.log("got imei :" + imei);
-                                            this.originChecker.checkOrigin(imei)
-                                                .then((countryOfOrigin) => {
-                                                    this.countryOfOrigin = countryOfOrigin;
-                                                    console.log("country of origin is : ", countryOfOrigin);
-                                                });
+                                    // (<any>window).plugins.imei.get(
+                                    //     (imei) => {
+                                    //         console.log("got imei :" + imei);
+                                    //         this.originChecker.checkOrigin(imei)
+                                    //             .then((countryOfOrigin) => {
+                                    //                 this.countryOfOrigin = countryOfOrigin;
+                                    //                 console.log("country of origin is : ", countryOfOrigin);
+                                    //             });
 
-                                        },
-                                        () => { console.log("error loading imei"); }
-                                    );
+                                    //     },
+                                    //     () => { console.log("error loading imei"); }
+                                    // );
                                 })
                                 .catch((error) => {
                                     console.log("error in getting permission :", error)
                                 })
                         } else {
                             console.log("Permission granted already, else statement is running");
-                            (<any>window).plugins.imei.get(
-                                (imei) => {
-                                    console.log("got imei frm else statement: " + imei);
+                            // (<any>window).plugins.imei.get(
+                            //     (imei) => {
+                            //         console.log("got imei frm else statement: " + imei);
 
-                                    this.originChecker.checkOrigin(imei)
-                                        .then((countryOfOrigin) => {
-                                            this.countryOfOrigin = countryOfOrigin;
-                                            console.log("country of origin is : ", countryOfOrigin);
-                                        });
-                                },
-                                () => { console.log("error loading imei"); }
-                            );
+                            //         this.originChecker.checkOrigin(imei)
+                            //             .then((countryOfOrigin) => {
+                            //                 this.countryOfOrigin = countryOfOrigin;
+                            //                 console.log("country of origin is : ", countryOfOrigin);
+                            //             });
+                            //     },
+                            //     () => { console.log("error loading imei"); }
+                            // );
                         }
                     },
                     (err) => { console.log("error", err) });
             }
         });
 
+    }
+
+    checkOrigin(): void {
+        event.preventDefault();
+
+        // ### WE ARE ASSUMING THAT WE ALREADY HAVE IMEI PERMISSION IN ANDROID 6.0 OR OBOVE ...
+        (<any>window).plugins.imei.get(
+            (imei) => {
+                console.log("got imei :" + imei);
+                this.originChecker.checkOrigin(imei)
+                    .then((countryOfOrigin) => {
+                        this.countryOfOrigin = countryOfOrigin;
+                        console.log("country of origin is : ", countryOfOrigin);
+                    });
+
+            },
+            () => { console.log("error loading imei"); }
+        );
     }
 
 }

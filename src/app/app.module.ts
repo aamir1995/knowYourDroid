@@ -1,3 +1,5 @@
+import { CountryOfOriginChecker } from '../providers/countryOfOriginChecker';
+import { PermissionService } from '../providers/permissionService';
 import { NgModule } from '@angular/core';
 import { IonicApp, IonicModule } from 'ionic-angular';
 import { MyApp } from './app.component';
@@ -16,6 +18,9 @@ import { HomePage } from '../pages/home/home';
     MyApp,
     HomePage
   ],
-  providers: []
+  providers: [
+    PermissionService,
+    CountryOfOriginChecker
+  ]
 })
-export class AppModule {}
+export class AppModule { }

@@ -1,14 +1,24 @@
-<ion-header>
+<!--<ion-header>
   <ion-navbar>
     <ion-title>
       Ionic Blank
     </ion-title>
   </ion-navbar>
-</ion-header>
+</ion-header>-->
 
-<ion-content padding>
-  The world is your oyster.
-  <p>
-    If you get lost, the <a href="http://ionicframework.com/docs/v2">docs</a> will be your guide.
-  </p>
+<ion-content class="mainContainer">
+  <div class="imeiContainer">
+    <p>IMEI : 5465654656466</p>
+  </div>
+
+  <a href="#" (click)="checkOrigin()" class="proceedBtn">
+    <span>Proceed!</span>
+  </a>
+
+  <div class="infoDiv" style="text-align: center;position: relative;top: 20vh;">
+<p>Your Phone is Made in</p>
+<p class="countryName">{{countryOfOrigin}}</p>
+</div>
+
+
 </ion-content>

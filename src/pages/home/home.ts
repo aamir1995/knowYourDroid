@@ -2,8 +2,11 @@ import { CountryOfOriginChecker } from '../../providers/countryOfOriginChecker';
 import { PermissionService } from '../../providers/permissionService';
 import { Component } from '@angular/core';
 import { NavController, Platform } from 'ionic-angular';
+// import particles from 'exports?particlesJS=window.particlesJS,window.pJSDom!particles.js'
 
 declare var cordova;
+declare var particlesJS;
+
 
 @Component({
     selector: 'page-home',
@@ -16,6 +19,17 @@ export class HomePage {
 
 
     ionViewDidLoad() {
+        /* particlesJS.load(@dom-id, @path-json, @callback (optional)); */
+        // particles.particlesJS.load('particles-js', 'assets/particles.json', () => {
+        //     console.log('callback - particles.js config loaded');
+        // });
+
+        setTimeout(() => {
+            // console.log(particlesJS);
+            particlesJS.load('particles-js', 'assets/particles.json', function () {
+                console.log('callback - particles.js config loaded');
+            });
+        }, 500);
 
         this.platform.ready().then((readySource) => {
             console.log('Platform ready from', readySource);

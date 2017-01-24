@@ -7,15 +7,17 @@
 </ion-header>-->
 
 <ion-content class="mainContainer">
-  <div class="imeiContainer">
-    <p>IMEI : 5465654656466</p>
-  </div>
 
-  <a href="#" (click)="checkOrigin()" class="proceedBtn">
-    <span>Proceed!</span>
-  </a>
+  <div id="particles-js" style="height: 100vh;width: auto"></div>
+<div class="imeiContainer">
+  <p>IMEI : 5465654656466</p>
+</div>
 
-  <div class="infoDiv" style="text-align: center;position: relative;top: 20vh;">
+<a href="#" (click)="checkOrigin()" class="proceedBtn">
+  <span>Proceed!</span>
+</a>
+
+<div class="infoDivCont" style="font-size: 1.5em;font-family: 'Roboto', sans-serif;text-align: center !important;position: absolute;top: 450px;color: white;left: 0;right: 0;">
 <p>Your Phone is Made in</p>
 <p class="countryName">{{countryOfOrigin}}</p>
 </div>

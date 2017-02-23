@@ -63,6 +63,19 @@ page-home {
             box-shadow: inset 0px 8px 48px #ddd;
         }
         ;
+        .proceedBtn {
+            transition: all 1s ease-in-out;
+            span {
+                text-shadow: 2px 1px 1px rgba(0, 0, 0, 0.3);
+                color: #f7f7f7;
+                font-size: 24px;
+            }
+        }
+        .proceedBtn:active {
+            width: 180px;
+            height: 180px;
+            ;
+        }
         .proceedBtn:before:hover {
             top: -25px;
             left: -25px;
